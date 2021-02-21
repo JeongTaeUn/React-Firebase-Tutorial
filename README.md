@@ -56,12 +56,6 @@
 - server.jsを作成する
   - node server.js で稼働可能
 
-## エラーになった。
-- Error: listen EADDRINUSE: address already in use
-  - scriptsのdev定義が間違っていた。
-    - client, serverで定義しているのでdevでは「yarn server, yarn start」になっており
-    　Portが重複することになりエラーとなった。
-
 ### processの状態を確認するコマンド
 - Mac
   - ps aux | grep node
@@ -88,7 +82,15 @@
   - mysqlをインストール
     - npm install --save mysql
 
-##
+## エラーになった。
+- Error: listen EADDRINUSE: address already in use
+  - scriptsのdev定義が間違っていた。
+    - client, serverで定義しているのでdevでは「yarn server, yarn start」になっており
+    　Portが重複することになりエラーとなった。
+
+- 'concurrently' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。
+  - npm install concurrently express --save
+
 
 
 ## React Scope
