@@ -48,12 +48,8 @@
   - `yarn add @material-ui/icons`
 
 ## Express Server Setting
-- 既存のFE関連ファイルは"client"フォルダーを作成して移動する。
-- rootにpackage.jsonファイルを生成する。rootでサーバーモジュールを実行するため
-- package.jsonを作成する。
-- nodemonをインストールする。
-  - npm install -g nodemon
-- server.jsを作成する
+- 
+
 
 # Getting Started with Create React App
 
