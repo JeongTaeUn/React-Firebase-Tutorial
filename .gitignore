@@ -23,3 +23,6 @@ yarn-error.log*
 package-lock.json
 build
 node_modules
+
+# database
+database.json

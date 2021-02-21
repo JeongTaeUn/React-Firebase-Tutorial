@@ -71,6 +71,25 @@
   - netstat -a -o -n
   - taskkill /F /PID (yourprocessID)
 
+## Aws Rds or Firebase
+- HeidiSQLを利用してアクセスする。
+  - https://www.heidisql.com/
+- Aws Rds
+  - aws.amazon.com/consoleにアクセス。
+  - RDSサービスからインスタンスを作成する。
+  - エンコードを設定。パラメータグループから設定可能。
+    - 新規作成
+    - 編集で[char,collation]を検索して可能なすべてはutf8,utf8_general_ciに変更すること。
+    - インスタンスを選択して修正→パラメータグループを修正すること。
+    - 先にパラメータグループを作成してインスタンス作成時にパラメータグループを指定すること。
+
+- DB 連動
+  - database.jsonファイルを作成
+  - mysqlをインストール
+    - npm install --save mysql
+
+##
+
 
 ## React Scope
 - constructor
