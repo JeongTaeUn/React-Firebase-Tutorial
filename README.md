@@ -41,6 +41,13 @@
   git config credential.helper store --global
   ```
 
+## Design System
+- Material-uiを利用する。
+  - material-ui.com
+  - `yarn add @material-ui/core`
+  - `yarn add @material-ui/icons`
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
