@@ -56,9 +56,6 @@
 - server.jsを作成する
   - node server.js で稼働可能
 
-## REST APIを構築する。
-
-
 ## エラーになった。
 - Error: listen EADDRINUSE: address already in use
   - scriptsのdev定義が間違っていた。
@@ -74,6 +71,18 @@
   - netstat -a -o -n
   - taskkill /F /PID (yourprocessID)
 
+
+## React Scope
+- constructor
+  - 初期実行時
+- componentWillMount
+  - コンポネントがマウントされるとき
+- render
+  - コンポネントをレンダリングする。
+- componentDidMount
+  - コンポネントがマウントされたあと
+- shouldComponentUpdate
+  - state or propsが更新されたとき
 
 # Getting Started with Create React App
 

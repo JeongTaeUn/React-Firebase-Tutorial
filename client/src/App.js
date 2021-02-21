@@ -5,8 +5,17 @@ import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import { TableRow, Paper } from "@material-ui/core";
+import { TableRow, Paper, CircularProgress } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+
+// const progressStyles = makeStyles((theme) => ({
+//   progress: {
+//     display: "flex",
+//     "^ > * + *": {
+//       marginLeft: theme.spacing(2),
+//     },
+//   },
+// }));
 
 const styles = (theme) => ({
   root: {
@@ -17,10 +26,31 @@ const styles = (theme) => ({
   table: {
     minWidth: 1080,
   },
+  circularProgress: {
+    display: "flex",
+    "^ > * + *": {
+      marginLeft: theme.spacing(2),
+    },
+  },
 });
 
 function App() {
   const [customers, setCustomers] = useState();
+  const [completed, setCompleted] = useState(0);
+
+  //loading progress until fetch success
+  useEffect(() => {
+    const progress = () => {
+      setCompleted((prevProgress) =>
+        prevProgress >= 100 ? 0 : prevProgress + 10
+      );
+    };
+
+    const timer = setInterval(progress, 800);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   useEffect(() => {
     callApi()
@@ -33,22 +63,34 @@ function App() {
     const body = await respons.json();
     return body;
   };
+  const { root, table, circularProgress } = styles;
 
-  const customer = customers ? customers.map((data) => {
-    return (
-      <Customer
-        key={data.id}
-        id={data.id}
-        imageUrl={data.imageUrl}
-        name={data.name}
-        birthday={data.birthday}
-        gender={data.gender}
-        job={data.job}
-      />
-    );
-  }) : null;
+  const customer = customers ? (
+    customers.map((data) => {
+      return (
+        <Customer
+          key={data.id}
+          id={data.id}
+          imageUrl={data.imageUrl}
+          name={data.name}
+          birthday={data.birthday}
+          gender={data.gender}
+          job={data.job}
+        />
+      );
+    })
+  ) : (
+    <TableRow>
+      <TableCell colSpan="6" align="center">
+        <CircularProgress
+          className={circularProgress}
+          variant="determinate"
+          value={completed}
+        />
+      </TableCell>
+    </TableRow>
+  );
 
-  const { root, table } = styles;
   return (
     <Paper className={root}>
       <Table className={table}>
