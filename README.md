@@ -1,3 +1,28 @@
+## Management System
+本プロジェクトはReactとFireBaseを利用し顧客管理システムです。
+
+※VSCode、NodeJsをインストールしておく
+
+- yarnをインストール
+  - npm install -g yarn
+
+- create-react-appをインストール
+  - npm install -g create-react-app
+
+- create-react-appで新規プロジェクトを生成
+  - create-react-app management
+
+- react server起動
+  - yarn start
+  - localhost:3000でアクセス可能
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
