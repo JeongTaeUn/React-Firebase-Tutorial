@@ -54,6 +54,26 @@
 - nodemonをインストールする。
   - npm install -g nodemon
 - server.jsを作成する
+  - node server.js で稼働可能
+
+## REST APIを構築する。
+
+
+## エラーになった。
+- Error: listen EADDRINUSE: address already in use
+  - scriptsのdev定義が間違っていた。
+    - client, serverで定義しているのでdevでは「yarn server, yarn start」になっており
+    　Portが重複することになりエラーとなった。
+
+### processの状態を確認するコマンド
+- Mac
+  - ps aux | grep node
+  - kill -9 PID
+  - lsof -i :port
+- Windows
+  - netstat -a -o -n
+  - taskkill /F /PID (yourprocessID)
+
 
 # Getting Started with Create React App
 
