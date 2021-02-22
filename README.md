@@ -82,6 +82,11 @@
   - mysqlをインストール
     - npm install --save mysql
 
+## サーバーとの通信
+- Axioライブラリをインストール
+  - npm install --save axios
+
+
 ## エラーになった。
 - Error: listen EADDRINUSE: address already in use
   - scriptsのdev定義が間違っていた。
@@ -90,8 +95,6 @@
 
 - 'concurrently' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。
   - npm install concurrently express --save
-
-
 
 ## React Scope
 - constructor

@@ -7,15 +7,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import { TableRow, Paper, CircularProgress } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-
-// const progressStyles = makeStyles((theme) => ({
-//   progress: {
-//     display: "flex",
-//     "^ > * + *": {
-//       marginLeft: theme.spacing(2),
-//     },
-//   },
-// }));
+import CustomerAdd from "./components/CustomerAdd";
 
 const styles = (theme) => ({
   root: {
@@ -92,21 +84,24 @@ function App() {
   );
 
   return (
-    <Paper className={root}>
-      <Table className={table}>
-        <TableHead key="head">
-          <TableRow>
-            <TableCell>id</TableCell>
-            <TableCell>image</TableCell>
-            <TableCell>name</TableCell>
-            <TableCell>job</TableCell>
-            <TableCell>gender</TableCell>
-            <TableCell>birthday</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>{customer}</TableBody>
-      </Table>
-    </Paper>
+    <div>
+      <Paper className={root}>
+        <Table className={table}>
+          <TableHead key="head">
+            <TableRow>
+              <TableCell>id</TableCell>
+              <TableCell>image</TableCell>
+              <TableCell>name</TableCell>
+              <TableCell>job</TableCell>
+              <TableCell>gender</TableCell>
+              <TableCell>birthday</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{customer}</TableBody>
+        </Table>
+      </Paper>
+      <CustomerAdd />
+    </div>
   );
 }
 
