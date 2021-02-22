@@ -57,4 +57,60 @@ app.get("/api/customers", (req, res) => {
   ]);
 });
 
+//for file upload
+// image upload aws A3 is good
+const multer = require("multer");
+const upload = multer({ dest: "./upload" });
+
+app.use("/image", express.static("./upload"));
+
+app.post("/api/customers", upload.single("image"), (req, res) => {
+  // insert Data
+  // const sql = "insert into customer values (null,?,?,?,?,?)";
+  // const image = "/image/" + req.file.filename;
+  // const name = req.body.name;
+  // const birthday = req.body.birthday;
+  // const gender = req.body.gender;
+  // const job = req.body.job;
+  // const params = [image, name, birthday, gender, job];
+  // connection.query(sql, params, (err,rows,fields) => {
+  //   res.send(rows);
+  // });
+  //for test
+  res.send([
+    {
+      id: 1,
+      imageUrl: "https://placeimg.com/64/64/1",
+      name: "customer1",
+      birthday: "19900101",
+      gender: "man1",
+      job: "student1",
+    },
+    {
+      id: 2,
+      imageUrl: "https://placeimg.com/64/64/2",
+      name: "customer2",
+      birthday: "19900102",
+      gender: "man2",
+      job: "student2",
+    },
+    {
+      id: 3,
+      imageUrl: "https://placeimg.com/64/64/3",
+      name: "customer3",
+      birthday: "19900103",
+      gender: "man3",
+      job: "student3",
+    },
+    {
+      id: 4,
+      imageUrl: "https://placeimg.com/64/64/4",
+      name: "customer4",
+      birthday: "19900104",
+      gender: "man4",
+      job: "student4",
+    },
+  ]);
+});
+
 app.listen(port, () => console.log(`Listening on Port ${port}`));

@@ -85,7 +85,8 @@
 ## サーバーとの通信
 - Axioライブラリをインストール
   - npm install --save axios
-
+- Multerライブラリをインストール(for file)
+  - npm install --save multer
 
 ## エラーになった。
 - Error: listen EADDRINUSE: address already in use
