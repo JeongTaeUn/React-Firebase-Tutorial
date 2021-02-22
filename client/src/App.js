@@ -60,6 +60,7 @@ function App() {
     const body = await respons.json();
     return body;
   };
+
   const { root, table, circularProgress } = styles;
 
   const customer = customers ? (
@@ -73,12 +74,13 @@ function App() {
           birthday={data.birthday}
           gender={data.gender}
           job={data.job}
+          action={stateRefresh}
         />
       );
     })
   ) : (
     <TableRow>
-      <TableCell colSpan="6" align="center">
+      <TableCell colSpan="7" align="center">
         <CircularProgress
           className={circularProgress}
           variant="determinate"
@@ -100,12 +102,13 @@ function App() {
               <TableCell>job</TableCell>
               <TableCell>gender</TableCell>
               <TableCell>birthday</TableCell>
+              <TableCell>delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{customer}</TableBody>
         </Table>
       </Paper>
-      <CustomerAdd action={stateRefresh}/>
+      <CustomerAdd action={stateRefresh} />
     </div>
   );
 }
