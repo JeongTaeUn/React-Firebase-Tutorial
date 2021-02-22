@@ -113,8 +113,10 @@ const styles = makeStyles((theme) => ({
 }));
 
 function App() {
+  const classes = styles();
   const [customers, setCustomers] = useState();
   const [completed, setCompleted] = useState(0);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   //loading progress until fetch success
   useEffect(() => {
@@ -135,46 +137,6 @@ function App() {
       .then((res) => setCustomers(res))
       .catch((err) => console.log(err));
   }, []);
-
-  // use CustomerAdd
-  const stateRefresh = (customers) => {
-    setCustomers(customers);
-  };
-
-  const callApi = async () => {
-    const respons = await fetch("/api/customers");
-    const body = await respons.json();
-    return body;
-  };
-
-  const classes = styles();
-  console.log(classes.menu);
-  const customer = customers ? (
-    customers.map((data) => {
-      return (
-        <Customer
-          key={data.id}
-          id={data.id}
-          imageUrl={data.imageUrl}
-          name={data.name}
-          birthday={data.birthday}
-          gender={data.gender}
-          job={data.job}
-          action={stateRefresh}
-        />
-      );
-    })
-  ) : (
-    <TableRow>
-      <TableCell colSpan="7" align="center">
-        <CircularProgress
-          className={classes.circularProgress}
-          variant="determinate"
-          value={completed}
-        />
-      </TableCell>
-    </TableRow>
-  );
 
   //App Bar Start
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -256,6 +218,50 @@ function App() {
       </MenuItem>
     </Menu>
   );
+
+  // use CustomerAdd
+  const stateRefresh = (customers) => {
+    setCustomers(customers);
+    setSearchKeyword("");
+  };
+
+  const callApi = async () => {
+    const respons = await fetch("/api/customers");
+    const body = await respons.json();
+    return body;
+  };
+
+  const filteredComponent = (data) => {
+    if (!data) {
+      return (
+        <TableRow>
+          <TableCell colSpan="7" align="center">
+            <CircularProgress
+              className={classes.circularProgress}
+              variant="determinate"
+              value={completed}
+            />
+          </TableCell>
+        </TableRow>
+      );
+    }
+    data = data ? data.filter((c) => c.name.indexOf(searchKeyword) > -1) : [];
+    return data.map((c) => {
+      return (
+        <Customer
+          key={c.id}
+          id={c.id}
+          imageUrl={c.imageUrl}
+          name={c.name}
+          birthday={c.birthday}
+          gender={c.gender}
+          job={c.job}
+          action={stateRefresh}
+        />
+      );
+    });
+  };
+
   const cellList = [
     "id",
     "image",
@@ -265,6 +271,12 @@ function App() {
     "birthday",
     "delete",
   ];
+
+  const handleValueChange = (e) => {
+    console.log(e.target.value);
+    setSearchKeyword(e.target.value);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -291,6 +303,9 @@ function App() {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
+              name="searchKeyword"
+              value={searchKeyword}
+              onChange={handleValueChange}
             />
           </div>
           <div className={classes.grow} />
@@ -343,7 +358,7 @@ function App() {
               })}
             </TableRow>
           </TableHead>
-          <TableBody>{customer}</TableBody>
+          <TableBody>{filteredComponent(customers)}</TableBody>
         </Table>
       </Paper>
     </div>
