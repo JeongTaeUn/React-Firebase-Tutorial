@@ -50,6 +50,11 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  // use CustomerAdd
+  const stateRefresh = (customers) => {
+    setCustomers(customers);
+  };
+
   const callApi = async () => {
     const respons = await fetch("/api/customers");
     const body = await respons.json();
@@ -100,7 +105,7 @@ function App() {
           <TableBody>{customer}</TableBody>
         </Table>
       </Paper>
-      <CustomerAdd />
+      <CustomerAdd action={stateRefresh}/>
     </div>
   );
 }

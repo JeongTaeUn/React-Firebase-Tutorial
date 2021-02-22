@@ -31,8 +31,8 @@ class CustomerAdd extends React.Component {
     e.preventDefault();
     this.addCustomer().then((response) => {
       console.log(response.data);
+      this.props.action(response.data);
     });
-    
   };
 
   addCustomer = () => {
