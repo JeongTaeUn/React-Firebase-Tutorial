@@ -1,5 +1,6 @@
 ## Management System
-本プロジェクトはReactとFireBaseを利用し顧客管理システムです。
+本プロジェクトはReactとFireBaseを利用した顧客管理システムです。
+※DBの実装はまだされていない。
 
 ※VSCode、NodeJsをインストールしておく
 
