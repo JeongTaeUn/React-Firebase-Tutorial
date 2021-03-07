@@ -16,37 +16,6 @@
   - yarn start
   - localhost:3000でアクセス可能
 
-## Gitを追加する。
-- .gitignoreファイルを作成する。
-
-  ```
-  ・Gitの初期化
-  git init
-  ・ファイルを追加
-  git add .
-  ・Commit
-  git commit -m "comment"
-  ・Remote設定
-  git remote add origin 自分のGitのリポジトリURL
-  ・Remote情報の確認
-  git remote -v
-  ・Push
-  git push --set-upstream origin master
-  ・リポジトリURLの変更
-  git remote set-url origin REPOSITORY-URL
-  ・認証情報を保存
-  git config --global credential.helper store
-  git config --global credential.helper cache
-  git config --global credential.helper 'cache --timeout=3600'
-  git config credential.helper store --global
-  ```
-
-## Design System
-- Material-uiを利用する。
-  - material-ui.com
-  - `yarn add @material-ui/core`
-  - `yarn add @material-ui/icons`
-
 ## Express Server Setting
 - 既存のFE関連ファイルは"client"フォルダーを作成して移動する。
 - rootにpackage.jsonファイルを生成する。rootでサーバーモジュールを実行するため
@@ -97,85 +66,48 @@
 - 'concurrently' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。
   - npm install concurrently express --save
 
-## React Scope
-- constructor
-  - 初期実行時
-- componentWillMount
-  - コンポネントがマウントされるとき
-- render
-  - コンポネントをレンダリングする。
-- componentDidMount
-  - コンポネントがマウントされたあと
-- shouldComponentUpdate
-  - state or propsが更新されたとき
+# Firebaseを使ってみよう
 
-# Getting Started with Create React App
+## nodejs をインストールする。
+ - バージョン：v12.16.0
+ - firebase は Google の Account でログイン可能。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## firebase 使用
+1. プロジェクト作成
+  - console.firebase.google.com でプロジェクトを作成する。
+2. アプリに firebase を追加
+ - 今回は Web アプリを追加する
+ - Hosting は未設定
+3. firebase の SDK を追加
+- プロジェクトの public に index.html を追加すること。
+- SDK は Script を提供してくれるのでコピーして<body>タグの下部に貼り付ける。
+- サービス利用前に実施すること。
+4. firebase の CLI をインストール
+`npm install -g firebase-tools`
+5. firebase にログイン（ログアウト）
+`firebase login`
+`firebase logout`
+6. firebase の初期化
+`firebase init`
+- Database,Hosting と Emulate を選択
+- Database port : 9000
+- Hosting port : 5000 
+7. ロカールサービス
+`firebase serve`
+8. deploy
+`firebase deploy`
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 認証とデータベースと連動
+**認証には下記 JS が必要 ★**
+1. 認証
+- firebase-auth.js 指定すること
+- コンソルページの「Authentication」で認証で使用する Provider を指定できる。
+- 今回は Google のみ使用。
+2. データベース連動
+- firebase-firestore.js 指定すること
+- コンソルページの「Realtime Database」あるいは「Cloud Firestore」を利用
+- 両方 NoSql である。
+- 今回は Cloud Firestore を利用する。
+  - Cloud Firestore
+    - location : asia-northwest1
+    - **index の作成は必須**
