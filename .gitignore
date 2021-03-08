@@ -25,4 +25,8 @@ build
 node_modules
 
 # database
+conf_firebase.json
 database.json
+firebase.json
+.firebase/
+.firebaserc

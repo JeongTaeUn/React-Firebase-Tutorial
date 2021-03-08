@@ -9,14 +9,19 @@ class Customer extends React.Component {
       <TableRow>
         <TableCell>{this.props.id}</TableCell>
         <TableCell>
-          <img src={this.props.imageUrl} alt="profile" />
+          <img
+            src={this.props.imageUrl}
+            alt="profile"
+            width="64"
+            height="48"
+          />
         </TableCell>
         <TableCell>{this.props.name}</TableCell>
         <TableCell>{this.props.job}</TableCell>
         <TableCell>{this.props.gender}</TableCell>
         <TableCell>{this.props.birthday}</TableCell>
         <TableCell>
-          <CustomerDelete id={this.props.id} action={this.props.action} />
+          <CustomerDelete name={this.props.name} action={this.props.action} />
         </TableCell>
       </TableRow>
     );

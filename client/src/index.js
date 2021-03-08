@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -17,5 +16,3 @@ ReactDOM.render(
   </MuiThemeProvider>,
   document.getElementById("root")
 );
-
-reportWebVitals();

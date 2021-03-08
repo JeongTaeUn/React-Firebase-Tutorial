@@ -46,7 +46,6 @@ class CustomerAdd extends React.Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     this.addCustomer().then((response) => {
-      console.log(response.data);
       this.props.action(response.data);
     });
     this.handleClickClose();

@@ -16,13 +16,14 @@ class CustomerDelete extends React.Component {
     };
   }
 
-  async deleteCustomer(id) {
-    const url = "api/customers/" + id;
+  async deleteCustomer(name) {
+    const url = "api/customers/" + name;
     const response = await fetch(url, {
       method: "DELETE",
     });
     const data = await response.json();
     this.props.action(data);
+    this.handleClickClose();
   }
 
   handleClickOpen = () => {
@@ -46,7 +47,7 @@ class CustomerDelete extends React.Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClickClose}
-          nodeRef={null}
+          noderef={null}
         >
           <DialogTitle>Confirm Delete Customer</DialogTitle>
           <DialogContent>
@@ -56,7 +57,7 @@ class CustomerDelete extends React.Component {
             <Button
               variant="contained"
               color="primary"
-              onClick={(e) => this.deleteCustomer(this.props.id)}
+              onClick={(e) => this.deleteCustomer(this.props.name)}
             >
               Delete
             </Button>

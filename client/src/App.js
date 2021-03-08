@@ -250,12 +250,12 @@ function App() {
       );
     }
     data = data ? data.filter((c) => c.name.indexOf(searchKeyword) > -1) : [];
-    return data.map((c) => {
+    return data.map((c, index) => {
       return (
         <Customer
-          key={c.id}
-          id={c.id}
-          imageUrl={c.imageUrl}
+          key={c.name}
+          id={index + 1}
+          imageUrl={c.imageUrl ? c.imageUrl : "https://placeimg.com/64/48/any"}
           name={c.name}
           birthday={c.birthday}
           gender={c.gender}
@@ -267,13 +267,13 @@ function App() {
   };
 
   const cellList = [
-    "id",
-    "image",
-    "name",
-    "job",
-    "gender",
-    "birthday",
-    "delete",
+    "No",
+    "Image",
+    "Name",
+    "Job",
+    "Gender",
+    "Birthday",
+    "Delete",
   ];
 
   const handleValueChange = (e) => {

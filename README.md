@@ -84,19 +84,20 @@
 - SDK は Script を提供してくれるのでコピーして<body>タグの下部に貼り付ける。
 - サービス利用前に実施すること。
 4. firebase の CLI をインストール
-`npm install -g firebase-tools`
+- `npm install -g firebase-tools`
+- `npm install --save firebase-admin`
 5. firebase にログイン（ログアウト）
-`firebase login`
-`firebase logout`
+- `firebase login`
+- `firebase logout`
 6. firebase の初期化
-`firebase init`
+- `firebase init`
 - Database,Hosting と Emulate を選択
 - Database port : 9000
 - Hosting port : 5000 
 7. ロカールサービス
-`firebase serve`
+- `firebase serve`
 8. deploy
-`firebase deploy`
+- `firebase deploy`
 
 ## 認証とデータベースと連動
 **認証には下記 JS が必要 ★**
